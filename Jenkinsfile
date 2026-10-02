@@ -9,13 +9,12 @@ pipeline {
                 sh 'docker build -t jenkins-demo .'
             }
         }
-
+        
         stage('Test') {
-            steps {
-                echo 'Running Tests'
-                sh 'npm test'
+             steps {
+                sh 'docker run --rm jenkins-demo npm test'
             }
-        }
+       }
 
         stage('Deploy') {
             steps {
